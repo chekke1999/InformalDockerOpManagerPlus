@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  opmanager:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: opmanager
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./opt/:/opt/
+    network_mode: "host"
+    tty: true
+    logging:
+        driver: json-file
+        options:
+          max-file: '1'
+          max-size: 300k
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+    name: proxy_network
