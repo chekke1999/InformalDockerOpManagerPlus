@@ -17,7 +17,3 @@ services:
           max-file: '1'
           max-size: 300k
     restart: unless-stopped
-networks:
-  default:
-    external: true
-    name: proxy_network
